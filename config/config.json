@@ -1,0 +1,7 @@
+{
+  "username": "root",
+  "password": null,
+  "database": "quiz",
+  "host": "quiz.db",
+  "dialect": "sqlite"
+}
