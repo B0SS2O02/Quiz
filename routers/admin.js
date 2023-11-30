@@ -1,9 +1,21 @@
 const express = require('express')
 const router = express.Router()
 const db = require('../models')
+const view = require('../views/components')
+
+
+view.parse('dsfsdfsd {{ dfg dsfgdfg}} fd sdfsd {{> dfsgd}}')
 
 router.get('/', (req, res) => {
-    res.render('home')
+    res.send(view.get(
+        'up',
+        'navbar',
+        '<div class="container">',
+        '{{12}}',
+        'header',
+        '<div>',
+        'down'
+    ))
 })
 
 router.get('/test', async (req, res) => {
@@ -18,8 +30,8 @@ router.get('/test/:id', async (req, res) => {
     let data = await db.Tests.findOne({
         attributes: ['Id', 'Name'],
         include: {
-            model:db.Questions,
-            attributes:['']
+            model: db.Questions,
+            attributes: ['']
         },
         where: {
             Id: req.params.id

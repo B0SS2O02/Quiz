@@ -2,12 +2,9 @@ const express = require('express')
 const app = express()
 const config = require('../config/config.json')
 const db = require('../models')
-const exphbs = require('express-handlebars');
-require('../util/HandlebarsHelpers')
 const router = require('../routers');
 
-app.engine('hbs', exphbs.engine());
-app.set('view engine', 'hbs');
+
 
 
 
@@ -19,11 +16,11 @@ app.use('/', router)
 
 const PORT = 8080
 
-db.sequelize.sync().then(() => {
+// db.sequelize.sync().then(() => {
     app.listen(PORT, () => {
         console.log(`Server started on http://localhost:${PORT}`)
     })
-}).catch((err) => {
-    console.log(err)
-})
+// }).catch((err) => {
+//     console.log(err)
+// })
 
